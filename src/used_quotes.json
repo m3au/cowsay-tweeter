@@ -52,5 +52,6 @@
   "Good design adds value faster than it adds cost. - Thomas C. Gale",
   "It's not a bug — it's an undocumented feature.",
   "The most important property of a program is whether it accomplishes the intention of its user. - C.A.R. Hoare",
-  "We can build systems that are provably correct only when we have a formal model of what 'correct' is. - Fred Brooks"
+  "We can build systems that are provably correct only when we have a formal model of what 'correct' is. - Fred Brooks",
+  "Any code of your own that you haven't looked at for six or more months might as well have been written by someone else. - Eagleson's Law"
 ]
