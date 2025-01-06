@@ -78,5 +78,6 @@
   "Code is like a poem; it's not just something we write to reach some practical result. - Donald Knuth",
   "The evolution of languages: FORTRAN is a nontyped language. C is a weakly typed language. Ada is a strongly typed language. C++ is a strongly hyped language.",
   "To iterate is human, to recurse divine.",
-  "Docker: Ensuring it works on more than just the developer's machine."
+  "Docker: Ensuring it works on more than just the developer's machine.",
+  "Vim users never exit... they just :q!"
 ]
