@@ -92,5 +92,6 @@
   "Good code is its own best documentation. As you're about to add a comment, ask yourself, 'How can I improve the code so that this comment isn't needed?' - Steve McConnell",
   "Chuck Norris doesn't need garbage collection because he doesn't call .Dispose(), he calls .Destroy().",
   ".NET is called .NET so that it wouldn't show up in a UNIX directory listing.",
-  "In C we had to code our own bugs. In C++ we can inherit them."
+  "In C we had to code our own bugs. In C++ we can inherit them.",
+  "React developers don't get errors, they get 'unexpected features.'"
 ]
