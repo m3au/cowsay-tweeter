@@ -183,5 +183,6 @@
   "Deleted code is debugged code. - Jeff Sickel",
   "The only way to go fast, is to go well. - Robert C. Martin",
   "React: Because manipulating the DOM yourself is so 2015.",
-  "JavaScript logic: 0 == \"0\" and 0 == []; therefore, \"0\" != []"
+  "JavaScript logic: 0 == \"0\" and 0 == []; therefore, \"0\" != []",
+  "A missed semicolon is the easiest way to spend the whole day searching for a bug."
 ]
