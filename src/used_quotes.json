@@ -182,5 +182,6 @@
   "Debugging is like trying to find a needle in a haystack, except the needle is not in the haystack, but somewhere in the haystack factory.",
   "Deleted code is debugged code. - Jeff Sickel",
   "The only way to go fast, is to go well. - Robert C. Martin",
-  "React: Because manipulating the DOM yourself is so 2015."
+  "React: Because manipulating the DOM yourself is so 2015.",
+  "JavaScript logic: 0 == \"0\" and 0 == []; therefore, \"0\" != []"
 ]
