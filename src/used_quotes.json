@@ -185,5 +185,6 @@
   "React: Because manipulating the DOM yourself is so 2015.",
   "JavaScript logic: 0 == \"0\" and 0 == []; therefore, \"0\" != []",
   "A missed semicolon is the easiest way to spend the whole day searching for a bug.",
-  "It's OK to figure out murder mysteries, but you shouldn't need to figure out code. You should be able to read it. - Steve McConnell"
+  "It's OK to figure out murder mysteries, but you shouldn't need to figure out code. You should be able to read it. - Steve McConnell",
+  "React developers are always in a state of confusion."
 ]
