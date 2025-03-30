@@ -110,5 +110,6 @@
   "Russian roulette: [ $[ $RANDOM",
   "In a software project team of ten, there are probably three people who produce enough defects to make them net-negative producers. - Gordon Dickson",
   "First, solve the problem. Then, write the code. - John Johnson",
-  "UNIX is simple. It just takes a genius to understand its simplicity."
+  "UNIX is simple. It just takes a genius to understand its simplicity.",
+  "I don't always test my code, but when I do, I do it in production."
 ]
