@@ -115,5 +115,6 @@
   "JavaScript logic: 0 == \"0\" and 0 == []; therefore, \"0\" != []",
   "Q: What did the Java code say to the C code? A: You've got no class.",
   "Debugging is like trying to find a needle in a haystack, except the needle is not in the haystack, but somewhere in the haystack factory.",
-  "If the box says, \"This software requires Windows XP or better,\" does that mean it'll run on Linux?"
+  "If the box says, \"This software requires Windows XP or better,\" does that mean it'll run on Linux?",
+  "UNIX was not designed to stop people from doing stupid things, because that would also stop them from doing clever things."
 ]
