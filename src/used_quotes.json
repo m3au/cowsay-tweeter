@@ -133,5 +133,6 @@
   "Programmer: A machine that turns coffee into code.",
   "A primary cause of complexity is that software vendors uncritically adopt almost any feature that users want. - Niklaus Wirth",
   "C makes it easy to shoot yourself in the foot; C++ makes it harder, but when you do, it blows your whole leg off.",
-  "Why programmers like UNIX: unzip, strip, touch, finger, grep, mount, fsck, more, yes, fsck, fsck, fsck, umount, sleep."
+  "Why programmers like UNIX: unzip, strip, touch, finger, grep, mount, fsck, more, yes, fsck, fsck, fsck, umount, sleep.",
+  "Debugging is anticipated with distaste, performed with reluctance, and bragged about forever. - Unknown"
 ]
