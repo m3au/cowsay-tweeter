@@ -211,5 +211,6 @@
   "There are two ways to write error-free programs; only the third one works. - Alan J. Perlis",
   "One: Demonstrations always crash. And two: The probability of them crashing goes up exponentially with the number of people watching.",
   "If Java had true garbage collection, most programs would delete themselves upon execution.",
-  "Real programmers count from 0."
+  "Real programmers count from 0.",
+  "In C we had to code our own bugs. In C++ we can inherit them."
 ]
