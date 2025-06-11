@@ -117,5 +117,6 @@
   "Refactoring: the art of code maintenance by someone who has to deal with past me's decisions.",
   "Don't worry if it doesn't work right. If everything did, you'd be out of a job. - Mosher’s Law of Software Engineering",
   "A program is never less than 90% complete and never more than 95% complete. - Tom Cargill",
-  "When your hammer is C++, everything begins to look like a thumb."
+  "When your hammer is C++, everything begins to look like a thumb.",
+  "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it. - Brian W. Kernighan"
 ]
