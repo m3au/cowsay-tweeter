@@ -133,5 +133,6 @@
   "Deleted code is debugged code. - Jeff Sickel",
   "Why did the AI cross the road? Because the training data said it was a good idea.",
   "Why did the Vim user cross the road? To get to the :other side.",
-  "Simplicity is prerequisite for reliability. - Edsger Dijkstra"
+  "Simplicity is prerequisite for reliability. - Edsger Dijkstra",
+  "We can build systems that are provably correct only when we have a formal model of what 'correct' is. - Fred Brooks"
 ]
