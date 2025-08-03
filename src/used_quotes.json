@@ -60,5 +60,6 @@
   "Kubernetes: For when you want to turn 'it works on my machine' into 'it works on every machine.'",
   "Deleted code is debugged code. - Jeff Sickel",
   "Programming today is a race between software engineers striving to build bigger and better idiot-proof programs, and the Universe trying to produce bigger and better idiots. So far, the Universe is winning.",
-  "JavaScript logic: 0 == \"0\" and 0 == []; therefore, \"0\" != []"
+  "JavaScript logic: 0 == \"0\" and 0 == []; therefore, \"0\" != []",
+  "Vim users never exit... they just :q!"
 ]
