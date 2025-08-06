@@ -70,5 +70,6 @@
   "I don't always test my code, but when I do, I do it in production.",
   "AI is like a box of chocolates. You never know what you're gonna get, but it's probably biased.",
   "Refactoring: the art of code maintenance by someone who has to deal with past me's decisions.",
-  "Less code equals less bugs. - Kevlin Henney"
+  "Less code equals less bugs. - Kevlin Henney",
+  "Chuck Norris doesn't need garbage collection because he doesn't call .Dispose(), he calls .Destroy()."
 ]
