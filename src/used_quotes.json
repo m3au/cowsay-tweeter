@@ -102,5 +102,6 @@
   "Good code is its own best documentation. As you're about to add a comment, ask yourself, 'How can I improve the code so that this comment isn't needed?' - Steve McConnell",
   "UNIX is user friendly. It's just very particular about who its friends are.",
   "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it. - Brian W. Kernighan",
-  "React Native: Write once, debug everywhere."
+  "React Native: Write once, debug everywhere.",
+  "Software and cathedrals are much the same — first we build them, then we pray."
 ]
