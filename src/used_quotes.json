@@ -104,5 +104,6 @@
   "Keyboard Failure. Press F1 to continue.",
   "Vim users don't search for text, the text finds them.",
   "William Shakespeare's question 2B OR NOT 2B = FF",
-  "There are only two hard things in computer science: cache invalidation and naming things."
+  "There are only two hard things in computer science: cache invalidation and naming things.",
+  "Good code is its own best documentation. As you're about to add a comment, ask yourself, 'How can I improve the code so that this comment isn't needed?' - Steve McConnell"
 ]
