@@ -198,5 +198,6 @@
   "Code never lies, comments sometimes do.",
   "In theory, there ought to be no difference between theory and practice. In practice, there is.",
   "Kubernetes: For when you want to turn 'it works on my machine' into 'it works on every machine.'",
-  "The function of good software is to make the complex appear to be simple. - Grady Booch"
+  "The function of good software is to make the complex appear to be simple. - Grady Booch",
+  "Docker: Ensuring it works on more than just the developer's machine."
 ]
