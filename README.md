@@ -41,7 +41,7 @@ npm install
 
 ## Website
 
-Check our website [cowsay.farm](https://cowsay.farm).
+Check our website [cowsay.farm](https://cowsay.farm)
 
 ## Author
 
