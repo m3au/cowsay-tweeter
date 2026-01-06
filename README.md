@@ -41,11 +41,11 @@ npm install
 
 ## Website
 
-Check our website [cowsay.co](https://cowsay.co).
+Check our website [cowsay.farm](https://cowsay.farm).
 
 ## Author
 
-[Bruno Palma](https://about.me/bruno_vop)
+[Bruno Palma](https://about.me/m3au)
 
 ## Contributing
 
