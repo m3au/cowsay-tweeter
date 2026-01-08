@@ -1,0 +1,65 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "flagWords": [],
+  "words": [
+    "devnet",
+    "Devnet",
+    "termcolor",
+    "matplotlib",
+    "Metaplex",
+    "metaplex",
+    "Arweave",
+    "arweave",
+    "IPFS",
+    "ipfs",
+    "keypair",
+    "Linder",
+    "Wirth",
+    "Cargill",
+    "Eagleson's",
+    "Kernighan",
+    "Sickel",
+    "Mosher",
+    "Mosher's",
+    "Edsger",
+    "Kevlin",
+    "Henney",
+    "Exupéry",
+    "bughunting",
+    "nontyped",
+    "Booch",
+    "Bjarne",
+    "Stroustrup",
+    "Berard",
+    "Pasal",
+    "BASI",
+    "Srygley",
+    "codinglife",
+    "Cherne",
+    "Hoare",
+    "cowsay",
+    "Cowsay",
+    "COWSAY",
+    "cowsayco",
+    "Cowsays",
+    "COWSAYS",
+    "devjokes",
+    "devmemes",
+    "lolcatjs",
+    "Solana"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "dist/**",
+    "*.lock",
+    "package-lock.json"
+  ],
+  "languageSettings": [
+    {
+      "languageId": "*",
+      "allowCompoundWords": true
+    }
+  ]
+}
+

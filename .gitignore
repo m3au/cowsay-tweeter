@@ -95,3 +95,5 @@ quote.txt
 .DS_Store
 
 venv/
+
+docs/

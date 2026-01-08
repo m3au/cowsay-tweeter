@@ -1,0 +1,59 @@
+{
+  "folders": [
+    {
+      "name": "cowsay-tweeter",
+      "path": ".",
+    },
+  ],
+  "settings": {
+    "files.exclude": {
+      "LICENSE": true,
+      ".editorconfig": true,
+      ".eslintrc.json": true,
+      ".eslintignore": true,
+      ".prettierrc": true,
+      ".gitattributes": true,
+      ".npmrc": true,
+      ".nvmrc": true,
+      ".markdownlint.jsonc": true,
+      ".cspell.jsonc": true,
+      ".gitignore": true,
+      ".git": true,
+      "node_modules": true,
+      "dist": true,
+      "package-lock.json": true,
+    },
+    "files.associations": {
+      "*.js": "javascript",
+      "*.sh": "shellscript",
+      "*.json": "jsonc",
+      "*.md": "markdown",
+    },
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "markdownlint.config": {
+      "MD033": false,
+      "MD041": false,
+      "MD013": false,
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[shellscript]": {
+      "editor.defaultFormatter": "foxundermoon.shell-format",
+    },
+    "[markdown]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+  },
+}
+
