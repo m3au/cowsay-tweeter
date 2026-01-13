@@ -15,6 +15,30 @@
         "width": 30,
         "fontSize": "5.5rem"
       }
+    },
+    {
+      "id": "003",
+      "quote": "Weeks of coding can save you hours of planning.",
+      "settings": {
+        "width": 32,
+        "fontSize": "6rem"
+      }
+    },
+    {
+      "id": "004",
+      "quote": "Chuck Norris's keyboard has two keys: 0 and 1.",
+      "settings": {
+        "width": 30,
+        "fontSize": "6rem"
+      }
+    },
+    {
+      "id": "005",
+      "quote": "I don't always test my code, but when I do, I do it in production.",
+      "settings": {
+        "width": 29,
+        "fontSize": "6rem"
+      }
     }
   ]
 }
