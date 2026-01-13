@@ -14,7 +14,8 @@
     "say": "node dist/say.js",
     "lolcat": "node dist/lolcat.js > ./dist/lolcat.ansi",
     "tweet": "node dist/tweet.js",
-    "local": "bash tweet_local.sh"
+    "local": "bash tweet_local.sh",
+    "generate-tiers": "npm run compile && node dist/generate-tiers.js"
   },
   "keywords": [
     "cowsay",

@@ -1,0 +1,32 @@
+It works on my machine!
+There are only two hard things in computer science: cache invalidation and naming things. - Phil Karlton
+A good programmer looks both ways before crossing a one-way street.
+Code is like humor. When you have to explain it, it's bad.
+Debugging is like being the detective in a crime movie where you are also the murderer.
+First, solve the problem. Then, write the code.
+If debugging is the process of removing bugs, then programming must be the process of putting them in.
+One man's crappy software is another man's full-time job.
+Programmer: A machine that turns coffee into code.
+Real programmers count from 0.
+Talk is cheap. Show me the code.
+There are only two kinds of languages: the ones people complain about and the ones nobody uses.
+Any fool can write code that a computer can understand. Good programmers write code that humans can understand.
+The best code is no code at all.
+Premature optimization is the root of all evil.
+I don't always test my code, but when I do, I do it in production.
+The cloud is just someone else's computer.
+99 bugs in the code base. Take one down, patch it around. 137 bugs in the code base.
+I'm a developer. I turn coffee into bugs.
+Error 404: Motivation not found.
+I write code so clean, even the compiler gets emotional.
+Senior developer: someone who's made every mistake possible in production.
+Never trust a programmer who says it'll be done by Friday.
+I don't always deploy on Friday, but when I do, I take Monday off.
+Agile: the art of delivering half a product twice as fast.
+It's not a security flaw, it's an undocumented remote access feature.
+Multitasking: screwing up several things at once.
+Programmers don't die, they just go offline.
+There are two types of programmers: those who use version control and those who will.
+Hello World is the hardest part.
+The code is compiling… time to check Twitter.
+Ctrl+C, Ctrl+V: the original AI.

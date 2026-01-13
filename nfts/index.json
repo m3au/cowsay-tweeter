@@ -1,0 +1,20 @@
+{
+  "nfts": [
+    {
+      "id": "001",
+      "quote": "It works on my machine!",
+      "settings": {
+        "width": 40,
+        "fontSize": "6rem"
+      }
+    },
+    {
+      "id": "002",
+      "quote": "There are only two hard things in computer science: cache invalidation and naming things. - Phil Karlton",
+      "settings": {
+        "width": 30,
+        "fontSize": "5.5rem"
+      }
+    }
+  ]
+}

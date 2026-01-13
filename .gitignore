@@ -97,3 +97,6 @@ quote.txt
 venv/
 
 docs/
+
+# Generated NFT output
+output/
