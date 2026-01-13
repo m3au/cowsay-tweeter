@@ -123,5 +123,6 @@
   "Refactoring: fixing code you wrote when you were stupid.",
   "Ctrl+C, Ctrl+V: the original AI.",
   "The best thing about a boolean is even if you are wrong, you are only off by a bit.",
-  "We can build systems that are provably correct only when we have a formal model of what 'correct' is. - Fred Brooks"
+  "We can build systems that are provably correct only when we have a formal model of what 'correct' is. - Fred Brooks",
+  "Before software can be reusable, it first has to be usable. - Ralph Johnson"
 ]
