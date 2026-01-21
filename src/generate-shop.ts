@@ -161,8 +161,12 @@ function plainText(text: string): string {
   return text;
 }
 
-function greenTerminalText(text: string): string {
-  return `\x1b[38;2;0;255;0m${text}\x1b[0m`;
+function greenTerminalText(text: string, isWhiteBackground: boolean = false): string {
+  // Use darker green (RGB: 0, 170, 0) for white backgrounds, bright green (RGB: 0, 255, 0) for dark
+  const r = 0;
+  const g = isWhiteBackground ? 170 : 255;
+  const b = 0;
+  return `\x1b[38;2;${r};${g};${b}m${text}\x1b[0m`;
 }
 
 function parseTheme(theme: string): { 
@@ -225,7 +229,7 @@ async function generateShopImage(
     // For plain text, don't add ANSI codes - we'll use CSS color
     coloredText = cowsayText;
   } else if (themeConfig.textStyle === 'green') {
-    coloredText = greenTerminalText(cowsayText);
+    coloredText = greenTerminalText(cowsayText, themeConfig.background === 'white');
   } else {
     // rainbow - use the rainbowColorScheme directly from parseTheme
     const rainbowScheme = (themeConfig.rainbowColorScheme || 'purple') as 'default' | 'green' | 'yellow' | 'purple';
@@ -267,7 +271,8 @@ async function generateShopImage(
     // Use brighter, clearer colors for common theme
     textColor = themeConfig.background === 'white' ? '#000000' : '#FFFFFF';
   } else if (themeConfig.textStyle === 'green') {
-    textColor = '#00FF00';
+    // Use darker green for white backgrounds for better contrast, bright green for dark backgrounds
+    textColor = themeConfig.background === 'white' ? '#00AA00' : '#00FF00';
   }
   
   let css = `
