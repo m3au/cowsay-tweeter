@@ -1,0 +1,115 @@
+---
+globs: ['.cursor/rules/*.mdc']
+description: 'Standards for writing and maintaining .cursor/rules/*.mdc files'
+---
+
+# Rule File Standards
+
+Cursor rules provide contextual guidance to AI assistants working on the codebase. They must be precise, non-redundant, and token-efficient.
+
+## File Headers
+
+```yaml
+---
+globs: ['path/pattern/**/*.ts']
+description: 'Concise one-line description'
+alwaysApply: false
+---
+```
+
+File organization: Single h1 title, brief purpose, reference codebase locations (not inline examples), market standards + project guidance, actionable checklist
+
+## Content Standards
+
+Each rule must have:
+
+- Single responsibility: One focused topic per file
+- Scope: Project-agnostic (universal best practices) OR project-specific (codebase context)
+- No overlaps: Avoid redundancy with other rules
+- Minimal tokens: Avoid boilerplate; include reference catalogs when AI needs them to choose between options
+
+### Glob Patterns
+
+Specify exact file patterns. Examples:
+
+- `tests/e2e/poms/**/*.ts` - POM files
+- `tests/e2e/features/**/*.feature` - Feature files
+- `**/*.{test,spec}.ts` - Test files
+
+### AlwaysApply Flag
+
+Set `alwaysApply: true` only for:
+
+- Core communication principles (`core.mdc`)
+- Universal quality standards (`comments.mdc`, `dependencies.mdc`)
+
+Never use for domain-specific rules (api, frontend, security, etc.)
+
+## Writing Guidelines
+
+- Point to codebase locations instead of generic examples
+- Include reference catalogs when AI needs them to choose between options
+- Avoid boilerplate: Don't show "how to do it" when examples exist in codebase
+- Never reference codebase for obvious patterns (one-liners, basic ternaries) - only non-obvious or project-specific
+- Reference market standards (WCAG, OWASP, framework conventions)
+- Sort logically: basics → advanced
+- Keep paragraphs to 2-3 sentences; use lists, not long prose
+
+## Token Optimization
+
+For `alwaysApply: true` rules, use compression techniques:
+
+### Abbreviations
+
+- `A:` for "Always"
+- `N:` for "Never"
+- `+` for "Do" (positive actions)
+- `-` for "Don't" (negative actions)
+
+Example:
+
+```markdown
+- A: explain non-obvious code
+- N: commit commented-out code
+
+* Complex business logic, non-obvious workarounds
+
+- Comment out code - delete it
+```
+
+### Compact Syntax
+
+- Remove redundant words ("the", "a", "an" where possible)
+- Use symbols: `→`, `✓`, `✗`, `•`
+- Combine related items into single lines
+- Use tables for structured data (commit types, mappings)
+
+Example:
+
+```markdown
+Commands: `command > /dev/sda`, `rm -rf $UNSAFE_VAR/*`, `find . -delete` (dangerous, hooks may not catch)
+```
+
+Instead of:
+
+```markdown
+- Never run `command > /dev/sda` (overwrites disk metadata)
+- Never run `rm -rf $UNSAFE_VAR/*` (variable expansion could target wrong path)
+- Never run `find . -delete` (deletes all files in current directory recursively)
+```
+
+### Consolidation
+
+- Group related items into compact lists
+- Remove obvious statements
+- Eliminate duplicate phrases
+- Remove prescriptive numbers where not critical (e.g., "3-5 steps" → "discrete steps")
+
+## Review Checklist
+
+- Verify globs and alwaysApply flag
+- Remove boilerplate and link to codebase only for non-obvious patterns
+- Ensure single responsibility and no overlaps
+- Minimize tokens using abbreviations and compact syntax
+- Remove redundant/obvious statements
+- Use symbols and tables where appropriate

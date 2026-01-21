@@ -55,24 +55,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libgbm-dev libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 libgbm1 libasound2-dev libatspi2.0-0 libxshmfence1
 
-      - name: Load secrets from 1Password
-        uses: 1password/load-secrets-action@v2
-        with:
-          export-env: true
-        env:
-          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          TWITTER_APP_KEY: op://abeona/cowsay-bot/TWITTER_APP_KEY
-          TWITTER_APP_SECRET: op://abeona/cowsay-bot/TWITTER_APP_SECRET
-          TWITTER_ACCESS_TOKEN: op://abeona/cowsay-bot/TWITTER_ACCESS_TOKEN
-          TWITTER_ACCESS_SECRET: op://abeona/cowsay-bot/TWITTER_ACCESS_SECRET
-
       - name: Generate and post tweet
         run: npm run start
         env:
-          TWITTER_APP_KEY: ${{ env.TWITTER_APP_KEY }}
-          TWITTER_APP_SECRET: ${{ env.TWITTER_APP_SECRET }}
-          TWITTER_ACCESS_TOKEN: ${{ env.TWITTER_ACCESS_TOKEN }}
-          TWITTER_ACCESS_SECRET: ${{ env.TWITTER_ACCESS_SECRET }}
+          TWITTER_APP_KEY: ${{ secrets.TWITTER_APP_KEY }}
+          TWITTER_APP_SECRET: ${{ secrets.TWITTER_APP_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
 
       - name: Commit and push used quotes
         run: |

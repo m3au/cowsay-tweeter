@@ -16,7 +16,6 @@
     "cowsay",
     "Cowsay",
     "COWSAY",
-    "cowsayco",
     "Cowsays",
     "COWSAYS",
     "devjokes",
@@ -44,12 +43,14 @@
     "Mosher",
     "Mosher's",
     "nontyped",
+    "officialcowsay",
     "Pasal",
     "Sickel",
     "Solana",
     "Srygley",
     "Stroustrup",
     "termcolor",
+    "tshirt",
     "Wirth"
   ],
   "ignorePaths": [

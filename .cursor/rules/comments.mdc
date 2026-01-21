@@ -1,0 +1,33 @@
+---
+globs: ['**/*.{ts,tsx,js,jsx}']
+alwaysApply: true
+description: 'Comment best practices - when and how to write comments'
+---
+
+# Comment Best Practices
+
+## When to Comment
+
+- Explain WHY, not WHAT
+- Complex business logic, non-obvious workarounds/hacks
+- Document public APIs/interfaces
+- Explain architectural decisions
+
+* TODO comments without context
+
+- Comment out code - delete it
+
+## ESLint Disable
+
+- A: include reason when disabling rules
+- A: use `eslint-disable-next-line` for specific lines
+- N: disable rules globally unless necessary
+- N: disable multiple rules in one comment
+- A: place disable comments in file where needed, not in config
+
+## Rules
+
+- A: explain non-obvious code with comments
+- N: commit commented-out code
+- A: prefer self-documenting code over comments
+- N: add comments that only restate what the code does (unneeded/useless comments)

@@ -1,0 +1,58 @@
+---
+globs: ['tests/**/*.ts', 'playwright.config.ts']
+description: 'Playwright testing standards and best practices'
+---
+
+# Playwright Standards
+
+## Locator Selection
+
+### Prefer Semantic Locators
+
+- A: prefer `getByRole()` for elements with semantic roles (button, heading, link, textbox, etc.)
+- A: prefer `getByText()` when selecting by visible text
+- A: prefer `getByLabel()` for form inputs
+- A: prefer `getByPlaceholder()` for inputs with placeholders
+- A: prefer `getByTestId()` for elements with `data-testid` attributes
+
+### When to Use `locator()`
+
+- Use `locator()` only when semantic locators are not available or insufficient
+- Use `locator()` for complex CSS selectors (e.g., `[class*="plugmodal__category"]`)
+- Use `locator()` when you need to chain selectors (e.g., `parentLocator.locator('.child')`)
+- Use `locator()` for attribute-based selection when no semantic alternative exists (e.g., `[itemprop="name"]`)
+
+See `tests/e2e/poms/components/cookie-banner.ts` for semantic locator examples, `tests/e2e/poms/components/cable-selector-popup.ts` for `locator()` usage with complex selectors.
+
+## Auto-Waiting
+
+### Playwright Auto-Waiting
+
+- Playwright automatically waits for elements to be ready before interactions
+- `click()`, `fill()`, `type()` automatically wait for element to be attached, visible, stable, enabled, and receiving events
+- After clicking links, Playwright automatically waits for navigation to complete
+
+### When Explicit Waits Are Needed
+
+- N: use `waitForLoadState('load')` or `waitForLoadState('domcontentloaded')` after clicking links - Playwright auto-waits for navigation
+- N: use `waitForTimeout()` - use `expect()` assertions instead
+- Use `waitFor()` only for state transitions (e.g., `waitFor({ state: 'attached' })`) when not using `expect()`
+- Use `expect().toBeVisible()` for visibility checks - it has built-in waiting and better error reporting
+
+See `tests/e2e/poms/pages/product-detail-page.ts` for correct navigation handling without redundant waits.
+
+## Assertions
+
+- Prefer `expect()` over `waitFor()` for better test reporting
+- Use `expect().toBeVisible()` instead of `waitFor({ state: 'visible' })`
+- Use `expect().toBeHidden()` instead of `waitFor({ state: 'hidden' })`
+- Use `expect().toHaveText()` for text verification
+- `expect()` assertions automatically wait and provide better error messages
+
+See `tests/e2e/poms/pages/configurator-page.ts` and `tests/e2e/poms/components/cookie-banner.ts` for examples.
+
+## Locator Filtering
+
+- Use `.filter()` to narrow down locators when multiple matches exist
+- Use `.first()`, `.last()`, `.nth()` when order matters
+- Use `.has()` to filter by child elements or attributes

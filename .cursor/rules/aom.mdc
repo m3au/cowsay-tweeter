@@ -1,0 +1,159 @@
+---
+globs: ['tests/e2e/challenges/*/services/**/*.ts']
+description: 'API Object Model (AOM) standards and patterns'
+---
+
+# API Object Model Standards
+
+## Structure
+
+- Use `@Fixture` decorator with PascalCase name matching class name (e.g., `@Fixture('PostsService')`)
+- Export class with descriptive name ending in `Service` (e.g., `PostsService`, `AuthService`)
+- Constructor receives `APIRequestContext` as `private request: APIRequestContext` or `protected request: APIRequestContext`
+- Organize services into `services/` directory within each challenge
+- Define TypeScript interfaces for request/response types at the top of the file
+- Define endpoint constants as private readonly properties or private methods
+
+## Step Definitions
+
+- Use `@Given`, `@When`, `@Then` decorators from `@world` for step definitions that match Gherkin scenarios
+- Step text must match Gherkin scenarios exactly
+- All step methods must be `async`
+- Step methods receive parameters from Gherkin (e.g., `{string}`, `{int}`)
+- Always call `setLastResponse(response)` after API calls to enable shared step definitions
+- Use `ResponseVerifier` utilities for common response checks
+
+## Internal Helper Methods
+
+- Use `@Step` decorator for internal helper methods that should appear in Playwright test reports
+- All methods with `@Step` decorator must start with "i" following BDD naming convention:
+  - `iVerify...` for verification checks
+  - `iValidate...` for validation checks
+  - `iCheck...` for assertion checks
+- Examples: `iVerifyResponseIsOk()`, `iVerifyPostStructure()`, `iValidateUserData()`
+- Use Playwright's `expect` for all assertions
+
+## Response Handling
+
+- Store last response in private property: `private lastResponse: Awaited<ReturnType<...>> | null = null`
+- Store parsed response data in typed properties (e.g., `private lastPost: Post | null = null`)
+- Always call `setLastResponse(response)` after API calls to enable shared verification steps
+- Use `getLastResponse()` from `response-tracker` utility when needed in shared steps
+- Parse JSON responses immediately after status verification
+
+## Error Handling
+
+- Always verify response status codes using `ResponseVerifier.verifyResponseStatus()`
+- Check `response.ok()` for 2xx status codes before parsing JSON
+- Handle error responses separately (store in `lastErrorResponse` property)
+- Throw descriptive errors when required data is missing (e.g., "No response available. Perform an API request first.")
+
+## Imports
+
+- Import types: `import type { APIRequestContext } from '@playwright/test'`
+- Import decorators and utilities: `import { Fixture, Given, Then, When, Step, expect } from '@world'`
+- Import shared utilities: `import { ResponseVerifier } from '../utils/response-verifier'`
+- Import response tracking: `import { setLastResponse, getLastResponse } from '../utils/response-tracker'`
+- N: use relative imports - A: use path aliases for `@world` and challenge-specific utils
+
+## Patterns
+
+- **Endpoint Constants**: Define as private readonly properties or private methods
+  ```typescript
+  private readonly postsEndpoint = '/posts';
+  private readonly postByIdEndpoint = (id: number) => `/posts/${id}`;
+  ```
+
+- **Response Verification**: Use centralized `ResponseVerifier` class for common checks
+  ```typescript
+  await ResponseVerifier.verifyResponseIsOk(response);
+  await ResponseVerifier.verifyResponseStatus(response, 201);
+  ```
+
+- **Response Tracking**: Always track responses for shared step definitions
+  ```typescript
+  const response = await this.request.get(this.postsEndpoint);
+  setLastResponse(response);
+  ```
+
+- **Data Storage**: Store typed response data for subsequent assertions
+  ```typescript
+  this.lastPost = await response.json();
+  ```
+
+- **Shared Steps**: Use `getLastResponse()` for shared verification steps
+  ```typescript
+  @Then('the response status should be {int}')
+  async verifyResponseStatus(status: number): Promise<void> {
+    const response = getLastResponse();
+    if (!response) {
+      throw new Error('No response available. Perform an API request first.');
+    }
+    await ResponseVerifier.verifyResponseStatus(response, status);
+  }
+  ```
+
+## Service Class Template
+
+```typescript
+import type { APIRequestContext } from '@playwright/test';
+import { ResponseVerifier } from '../utils/response-verifier';
+import { setLastResponse } from '../utils/response-tracker';
+import { expect, Fixture, Given, Then, When, Step } from '@world';
+
+export interface Resource {
+  id: number;
+  // ... other properties
+}
+
+@Fixture('ResourceService')
+export class ResourceService {
+  constructor(private request: APIRequestContext) {}
+
+  private readonly resourceEndpoint = '/resources';
+  private readonly resourceByIdEndpoint = (id: number) => `/resources/${id}`;
+
+  private lastResponse: Awaited<ReturnType<APIRequestContext['get']>> | null = null;
+  private lastResource: Resource | null = null;
+
+  @Given('I retrieve all resources')
+  async getAllResources(): Promise<void> {
+    const response = await this.request.get(this.resourceEndpoint);
+    this.lastResponse = response;
+    setLastResponse(response);
+    await ResponseVerifier.verifyResponseIsOk(response);
+    this.lastResource = await response.json();
+  }
+
+  @Then('the resource should have ID {int}')
+  async verifyResourceId(expectedId: number): Promise<void> {
+    if (!this.lastResource) {
+      throw new Error('No resource retrieved. Call "I retrieve all resources" first.');
+    }
+    await this.iVerifyResourceId(this.lastResource, expectedId);
+  }
+
+  @Step
+  private async iVerifyResourceId(resource: Resource, expectedId: number): Promise<void> {
+    expect(resource).toHaveProperty('id');
+    expect(resource.id).toBe(expectedId);
+  }
+}
+```
+
+## Utilities
+
+- **ResponseVerifier**: Centralized response verification methods (status codes, OK checks)
+- **ResponseTracker**: Global response tracking for shared step definitions
+- **ResponseValidator**: Response structure validation (optional, challenge-specific)
+- **DataGenerator**: Test data generation utilities (optional, challenge-specific)
+- **TokenManager**: Authentication token management (for authenticated APIs)
+
+## Differences from POM
+
+- **Dependency**: `APIRequestContext` instead of `Page`
+- **Interaction**: HTTP requests/responses instead of DOM elements
+- **Assertions**: Response status, body, headers instead of DOM state
+- **No Screenshots**: API tests don't generate screenshots or videos
+- **Faster Execution**: No browser launch overhead
+- **No Locators**: Direct HTTP method calls instead of element locators

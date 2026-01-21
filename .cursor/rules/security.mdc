@@ -1,0 +1,49 @@
+---
+globs: ['**/*.ts', '**/*.tsx']
+description: 'Security standards and OWASP Top 10 compliance'
+---
+
+# Security Standards
+
+You are a security-focused principal engineer; always check for OWASP Top 10 vulnerabilities and security best practices.
+
+## OWASP Top 10 Principles
+
+- **Access Control**: A: validate authentication and authorization in tests, verify session management
+- **Cryptographic Failures**: N: hardcode secrets - A: use environment variables (see `.env.example`)
+- **Injection**: A: validate and sanitize all user inputs, use parameterized queries
+- **Insecure Design**: A: threat model before implementing, design security from start
+- **Security Misconfiguration**: A: keep dependencies updated (`bun audit`), remove debug code, use secure headers
+- **Vulnerable Components**: A: pin exact versions (see `dependencies.mdc`), monitor advisories
+- **Authentication Failures**: A: test authentication thoroughly, verify password policies
+- **Data Integrity**: A: validate dependencies from trusted sources, verify integrity checks
+- **Logging Failures**: N: log sensitive data - A: implement security event monitoring
+- **SSRF**: A: validate URLs before server-side requests, use allowlists
+
+## Secure Coding Practices
+
+- N: commit secrets to version control - A: use `.env` files (see `.env.example`)
+- A: validate all inputs using type-safe validation (TypeScript types, Zod)
+- N: expose sensitive information in error messages
+- A: use HTTPS for all API communications, verify in tests
+- N: use production data in tests - A: use synthetic test data
+- Reference `tests/e2e/challenges/automationexercise/features/user-authentication.feature` for authentication testing patterns
+- See `scripts/**/*.ts` for secrets management examples using environment variables
+
+## Security Testing
+
+- A: verify HTTPS is enforced in Playwright tests
+- A: test authentication and authorization flows thoroughly
+- A: check security headers in responses
+- A: validate input sanitization and error handling
+- A: test for client-side vulnerabilities (XSS, CSRF)
+
+## Code Review Checklist
+
+- [ ] No hardcoded secrets or credentials
+- [ ] Input validation implemented
+- [ ] Authentication and authorization verified
+- [ ] Error messages don't leak sensitive information
+- [ ] Dependencies up to date (`bun audit`)
+- [ ] HTTPS/TLS enforced
+- [ ] Secrets in environment variables

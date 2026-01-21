@@ -1,0 +1,38 @@
+{
+  "quote": "There are only two hard things in computer science: cache invalidation and naming things. - Phil Karlton",
+  "nft": {
+    "width": 2000,
+    "height": 2000,
+    "fontSize": "6rem",
+    "wrapWidth": 40,
+    "paddingTop": "0%"
+  },
+  "cup": {
+    "width": 2067,
+    "height": 886,
+    "fontSize": "3.5rem",
+    "wrapWidth": 30,
+    "paddingTop": "5%"
+  },
+  "mousepad": {
+    "width": 2925,
+    "height": 2502,
+    "fontSize": "8.5rem",
+    "wrapWidth": 40,
+    "paddingTop": "0%"
+  },
+  "socks": {
+    "width": 1417,
+    "height": 4252,
+    "fontSize": "5rem",
+    "wrapWidth": 25,
+    "paddingTop": "100%"
+  },
+  "tshirt": {
+    "width": 4606,
+    "height": 5787,
+    "fontSize": "14.5rem",
+    "wrapWidth": 35,
+    "paddingTop": "33%"
+  }
+}

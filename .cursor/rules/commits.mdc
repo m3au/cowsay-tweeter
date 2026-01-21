@@ -1,0 +1,46 @@
+---
+globs: ['.git/COMMIT_EDITMSG']
+description: 'Conventional Commits standards for clear, semantic commit messages'
+---
+
+# Conventional Commits
+
+Follow [Conventional Commits](https://www.conventionalcommits.org/) specification.
+
+## Scope Examples
+
+Use lowercase, kebab-case: `playwright`, `page-objects`, `config`, `docs`, `tests`
+
+## Examples
+
+See git history for real examples. Common patterns: `feat:`, `feat(scope):`, `fix(scope):` with body explaining non-obvious changes.
+
+## Commit Types and Gitmojis
+
+All commit types are mapped to gitmojis for display in version bumping logs. Mappings follow the [gitmoji.dev](https://gitmoji.dev) specification:
+
+- `feat` ✨ - Introduce new features
+- `fix` 🐛 - Fix a bug
+- `docs` 📝 - Add or update documentation
+- `style` 🎨 - Improve structure / format of the code
+- `refactor` ♻️ - Refactor code
+- `test` ✅ - Add, update, or pass tests
+- `chore` 🔨 - Add or update development scripts
+- `perf` ⚡ - Improve performance
+- `ci` 👷 - Add or update CI build system
+- `build` 📦 - Add or update compiled files or packages
+- `revert` ⏪ - Revert changes
+
+> Note: Gitmojis are for display purposes only in version bumping logs. Commit messages must still follow Conventional Commits format without emojis: `type(scope): subject`
+
+## Rules
+
+- A: use lowercase for type and scope
+- A: use imperative mood in subject
+- N: end subject with period
+- A: explain non-obvious changes in body
+- A: reference related issues in footer
+- A: commit by logical units - group related changes together (e.g., all husky hooks, all docs, all configs)
+- A: amend commits when making follow-up fixes to the same change (typos, lint errors, formatting)
+- Version bumping is automatic: feat = minor, fix/perf/refactor = patch, BREAKING CHANGE = major
+- Changelog generation is automatic

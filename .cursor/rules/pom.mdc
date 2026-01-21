@@ -1,0 +1,68 @@
+---
+globs: ['tests/e2e/challenges/*/poms/**/*.ts']
+description: 'Page Object Model (POM) standards and patterns'
+---
+
+# Page Object Model Standards
+
+## Structure
+
+- Use `@Fixture` decorator with PascalCase name matching class name (e.g., `@Fixture('CableConfiguratorPage')`)
+- Export class with descriptive name (e.g., `CableConfiguratorPage`)
+- Constructor receives `Page` as `protected page: Page` or `private page: Page`
+- Organize POMs into `pages/` (full pages) or `components/` (reusable components) subdirectories
+- All locator selectors must be initialized in the constructor - no inline locator creation in methods
+- Declare all locator properties at the top of the class (before constructor)
+- Use descriptive locator names ending with `Locator` (e.g., `cableBeginningButton`, `popupLocator`)
+- Child locators can be derived inline when needed (e.g., `parentLocator.locator('.child')`) but parent locators must be defined at top
+
+## Step Definitions
+
+- Use `@Given`, `@When`, `@Then` decorators from `@world` for step definitions that match Gherkin scenarios
+- Step text must match Gherkin scenarios exactly
+- All step methods must be `async`
+- Step methods can optionally receive fixtures parameter: `async stepMethod(_fixtures?: PageFixtures)`
+
+## Internal Helper Methods
+
+- Use `@Step` decorator for internal helper methods that should appear in Playwright test reports
+- All methods with `@Step` decorator must start with "i" following BDD naming convention:
+  - `iSee...` for visibility checks
+  - `iClick...` for click actions
+  - `iSelect...` for selection actions
+  - `iNavigate...` for navigation actions
+- Examples: `iSeeTheCableSelectorPopup()`, `iClickCableBeginning()`, `iSelectRandomCableType()`
+- Use Playwright assertions and waiting patterns - see `playwright.mdc` for guidance
+
+## Imports
+
+- Import everything from `@world`: `import { Fixture, Given, Then, When, Step, expect, type Page, type Locator } from '@world'`
+- Import components: `import { ComponentName } from '@components/component-name'`
+- Import pages: `import { PageName } from '@pages/page-name'`
+- Import data: `import { getEnvironment } from '@data/config'`
+- Import utils: `import { getRandomIndex, isValidTextItem } from '@utils'`
+- N: use relative imports - A: use path aliases
+
+## Patterns
+
+- Use `process.env['BASE_URL']` for environment variables
+- Use Playwright locators and assertions - see `playwright.mdc` for API guidance
+- Use private helper methods for reusable logic
+- Implement retry logic for flaky operations
+- Avoid `.catch(() => false)` unless absolutely necessary - let errors propagate for better debugging
+- No random functions - pass "random" as string parameter (e.g., `iSelectCableOfType('random')`, `iSelectConnector('random')`)
+- Use `globalThis.crypto.getRandomValues()` for randomization via `@utils` (`getRandomIndex`, `getRandomElement`)
+
+## Registration
+
+- POMs must be registered in the challenge-specific `world.ts` (e.g., `tests/e2e/challenges/uitestingplayground/world.ts`)
+- Fixture name must match `@Fixture` decorator parameter (PascalCase)
+- See `tests/e2e/challenges/uitestingplayground/poms/pages/home-page.ts` and `tests/e2e/challenges/automationexercise/poms/components/cookie-consent.ts` for examples
+
+## Path Aliases
+
+- `@world` - `./tests/e2e/world.ts` - Re-exports Playwright types, expect, and decorators
+- `@components/*` - `./tests/e2e/challenges/uitestingplayground/poms/components/*` - Component POMs (uitestingplayground challenge)
+- `@pages/*` - `./tests/e2e/challenges/uitestingplayground/poms/pages/*` - Page POMs (uitestingplayground challenge)
+- `@automationexercise/*` - `./tests/e2e/challenges/automationexercise/*` - AutomationExercise challenge resources
+- `@utils` - `./tests/utils/index.ts` - Utility functions

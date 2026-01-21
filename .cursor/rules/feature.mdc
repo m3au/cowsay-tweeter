@@ -1,0 +1,36 @@
+---
+globs: ['**/*.feature']
+description: 'Gherkin feature file standards and BDD best practices'
+---
+
+# Feature File Standards
+
+## Structure
+
+- Start with `Feature:` followed by a descriptive title
+- Include user story format: "As a... I want... So that..."
+- Use `Scenario:` for individual test cases
+- Use `Scenario Outline:` with `Examples:` for data-driven tests
+- Use `@skip` tag for disabled scenarios (prefer commenting them out if long-term disabled)
+
+## Step Definitions
+
+- A: start steps with "I" (e.g., "I navigate", "I click", "I see")
+- N: use "should" in step text (e.g., ~~"I should see"~~, use "I see" instead)
+- N: use "and" or "or" in the middle of a step description (e.g., ~~"I see popup closed and connector selected"~~)
+- Use `Given` for setup/preconditions (e.g., "Given I navigate to the page")
+- Use `When` for user actions (e.g., "When I click on button")
+- Use `Then` for assertions/outcomes (e.g., "Then I see the result")
+- Use `And` keyword only to continue steps of the same type, never in step text
+- Keep steps concise and action-oriented
+- Each step should verify or perform ONE thing only
+- Reference step definitions implemented in POMs via decorators
+
+## Best Practices
+
+- One scenario per specific behavior
+- Steps should be reusable across scenarios
+- Use descriptive step text that clearly states intent
+- Avoid implementation details in step text
+- Keep scenarios independent and testable in isolation
+- Use tags (`@skip`, etc.) for test organization

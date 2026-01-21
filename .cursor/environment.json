@@ -1,0 +1,18 @@
+{
+  "snapshot": "snapshot-playwright-pilot",
+  "install": "bun install",
+  "terminals": [
+    {
+      "name": "test",
+      "command": "bun run test"
+    },
+    {
+      "name": "test:ui",
+      "command": "bun run ui"
+    },
+    {
+      "name": "lint",
+      "command": "bun run lint"
+    }
+  ]
+}

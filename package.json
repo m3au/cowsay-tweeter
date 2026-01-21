@@ -9,14 +9,15 @@
   "scripts": {
     "clean": "rm -rf dist/**.*",
     "compile": "tsc",
-    "start": "npm run clean && npm run compile && npm run say && npm run lolcat && npm run convert && npm run tweet ",
-    "convert": "node dist/convert.js",
-    "say": "node dist/say.js",
-    "lolcat": "node dist/lolcat.js > ./dist/lolcat.ansi",
-    "tweet": "node dist/tweet.js",
+    "start": "bun run clean && bun run compile && bun run say && bun run lolcat && bun run convert && bun run tweet ",
+    "convert": "bun dist/convert.js",
+    "say": "bun dist/say.js",
+    "lolcat": "bun dist/lolcat.js > ./dist/lolcat.ansi",
+    "tweet": "bun dist/tweet.js",
     "local": "bash tweet_local.sh",
-    "generate-tiers": "npm run compile && node dist/generate-tiers.js",
-    "generate-shop": "npm run compile && node dist/generate-shop.js"
+    "generate-tiers": "bun src/generate-tiers.ts",
+    "generate-shop": "bun src/generate-shop.ts",
+    "generate-artwork": "bun src/generate-artwork.ts"
   },
   "keywords": [
     "cowsay",

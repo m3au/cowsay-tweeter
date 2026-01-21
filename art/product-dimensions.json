@@ -1,0 +1,22 @@
+{
+  "nft": {
+    "width": 2000,
+    "height": 2000
+  },
+  "cup": {
+    "width": 2067,
+    "height": 886
+  },
+  "mousepad": {
+    "width": 2925,
+    "height": 2502
+  },
+  "socks": {
+    "width": 1417,
+    "height": 4252
+  },
+  "tshirt": {
+    "width": 4606,
+    "height": 5787
+  }
+}

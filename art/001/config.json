@@ -1,0 +1,28 @@
+{
+  "quote": "It works on my machine!",
+  "nft": {
+    "fontSize": "6rem",
+    "wrapWidth": 40,
+    "paddingTop": "0%"
+  },
+  "cup": {
+    "fontSize": "4rem",
+    "wrapWidth": 40,
+    "paddingTop": "0%"
+  },
+  "mousepad": {
+    "fontSize": "8.5rem",
+    "wrapWidth": 40,
+    "paddingTop": "0%"
+  },
+  "socks": {
+    "fontSize": "5rem",
+    "wrapWidth": 25,
+    "paddingTop": "100%"
+  },
+  "tshirt": {
+    "fontSize": "14.5rem",
+    "wrapWidth": 35,
+    "paddingTop": "33%"
+  }
+}

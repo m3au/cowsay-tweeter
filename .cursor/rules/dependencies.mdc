@@ -1,0 +1,13 @@
+---
+globs: ['**/package.json', '**/package-lock.json', '**/bun.lockb']
+alwaysApply: true
+description: 'Dependency version pinning standards for reproducible builds'
+---
+
+# Dependency Version Pinning
+
+## Rules
+
+- A: pin exact versions (x.y.z) for all dependencies
+- N: use range operators (^, ~, >=, etc.) in package.json
+- N: commit unpinned dependency versions

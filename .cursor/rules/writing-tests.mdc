@@ -1,0 +1,66 @@
+---
+globs: ['tests/**/*.{ts,feature}', 'playwright.config.ts']
+description: 'Test writing standards and conventions'
+---
+
+# Writing Tests
+
+## Test Organization
+
+Tests are organized by challenge in `tests/e2e/challenges/`:
+
+- `tests/e2e/challenges/uitestingplayground/` - UI testing challenges (23 scenarios)
+- `tests/e2e/challenges/automationexercise/` - E-commerce challenges (15 scenarios)
+- `tests/e2e/challenges/jsonplaceholder/` - API testing challenges (34 scenarios)
+
+Each challenge contains:
+
+- `features/` - Gherkin feature files (`.feature`)
+- `poms/` - Page Object Models with BDD decorators
+  - `pages/` - Page-level POMs
+  - `components/` - Reusable component POMs (UITestingPlayground only)
+- `services/` - API Object Models (JSONPlaceholder only)
+
+Unit tests are in `tests/unit/` and achieve 100% coverage for utilities and scripts.
+
+## Test Writing Patterns
+
+### BDD with Gherkin
+
+Tests use Gherkin feature files with BDD decorators directly on POM methods. No separate step-definition files needed.
+
+See `tests/e2e/challenges/uitestingplayground/features/element-identification.feature` and `tests/e2e/challenges/automationexercise/features/product-browsing.feature` for feature file examples.
+
+See `tests/e2e/challenges/uitestingplayground/poms/pages/verify-text-page.ts` and `tests/e2e/challenges/automationexercise/poms/pages/product-details-page.ts` for POM implementation examples.
+
+### Testing Conventions
+
+- A: use `@Fixture` decorator on POM classes (see `pom.mdc` for details)
+- A: use Playwright's semantic locators (see `playwright.mdc` for locator guidance)
+- A: use `expect()` assertions (see `playwright.mdc` for assertion patterns)
+- A: use environment variables via `environment('BASE_URL_*')` from `tests/e2e/world.ts`
+- A: write independent tests - each test should be isolated
+- A: use data-driven tests with `Scenario Outline:` and `Examples:` in Gherkin when appropriate
+
+### Before Writing a Test
+
+- If fixing a bug, write the test first and ensure it fails (as expected) before the fix
+- Always attempt to find related tests in existing files before creating new test files
+- When expected behavior is ambiguous, defer to Playwright best practices and accessibility standards
+- For regression tests, place in appropriate challenge directory with descriptive scenario name
+
+### Test Execution
+
+- A: run `bun run test` (not `playwright test` directly) - ensures BDD generation happens first
+- A: verify tests pass locally before pushing
+- A: run `bun run test` after making changes to ensure everything works
+- N: skip tests without good reason - use `@skip` tag in Gherkin if temporarily disabled
+
+### Unit Tests
+
+Unit tests use Bun's built-in test runner (`bun test`). See `tests/unit/random.test.ts`, `tests/unit/environment.test.ts`, and `tests/unit/decorators.test.ts` for examples.
+
+- Unit tests run automatically before every commit (pre-commit hook)
+- All utilities in `tests/utils/` must have unit tests
+- All scripts in `scripts/` must have unit tests
+- Coverage is enabled by default (configured via `bunfig.toml`)

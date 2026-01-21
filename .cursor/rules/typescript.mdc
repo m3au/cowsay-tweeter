@@ -1,0 +1,48 @@
+---
+globs: ['**/*.ts', '**/*.tsx']
+description: 'TypeScript standards and best practices'
+---
+
+# TypeScript Standards
+
+## Type Safety
+
+- N: use `any` or `unknown` without type guards
+- A: use generics for reusable code
+- A: define interfaces for object shapes
+- A: use explicit return types for functions
+- See `tsconfig.json` for strict mode configuration
+
+## Import/Export Patterns
+
+- A: use ES modules (`import`/`export`) only
+- A: use type imports: `import type` for type-only imports
+- See existing files for import patterns
+
+## Decorator Support
+
+- See `tests/e2e/poms/**/*.ts` for decorator usage examples
+
+## Script Files
+
+- A: use TypeScript (`.ts`) for all script files in `scripts/` directory
+- N: use `.mjs`, `.js`, or other JavaScript formats for scripts
+- Use `bun scripts/<name>.ts` to execute scripts directly
+- See existing scripts in `scripts/` for examples
+
+## Best Practices
+
+- A: use strict mode and proper async/await typing
+- A: use discriminated unions for type narrowing
+- A: handle errors with proper types
+- A: prefer const assertions over type assertions when possible
+- See `eslint.config.mjs` for TypeScript ESLint rules
+
+## Code Style
+
+### Conditional Statements
+
+- A: use one-liners for simple if statements with single statement
+- A: prefer ternary operators over if-else with early returns when both branches execute
+- A: use early returns for error handling and validation checks
+- A: keep ternary operators readable - N: deeply nested ternaries

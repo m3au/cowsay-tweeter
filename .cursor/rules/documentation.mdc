@@ -1,0 +1,38 @@
+---
+globs: ['**/*.{md,mdx,mdc}']
+description: 'Documentation standards and best practices'
+---
+
+# Documentation Standards
+
+## Language and Tone
+
+- A: professional, precise, approachable
+- A: active voice; concise
+- N: subjective descriptors - use measurable terms
+
+## Content Quality
+
+- A: honest, direct, factual; acknowledge limits
+- N: marketing/superlatives/buzzwords
+- A: technically accurate; verify claims; precise terms
+- A: audience-appropriate depth
+- A: document what exists (not future plans)
+- A: descriptive link text (N: "click here", "see this")
+- A: human-centered where relevant; concrete examples
+
+## Structure
+
+- Start with overview and purpose
+- Middle: implementation details and usage
+- End: examples and troubleshooting
+- A: logical flow, consistent terms
+
+## Accessibility
+
+- A: include alt text for images (WCAG requirement)
+
+## Consistency
+
+- A: consistent capitalization and punctuation across list items
+- A: consistent list formatting within same list

@@ -1,0 +1,220 @@
+---
+globs: ['tests/performance/**/*.{ts,js,yml}']
+description: 'Performance testing standards and best practices'
+---
+
+# Performance Testing Standards
+
+## Performance Test Organization
+
+Performance tests are organized by challenge in `tests/performance/challenges/`:
+
+- `tests/performance/challenges/jsonplaceholder/` - JSONPlaceholder API load tests
+- `tests/performance/challenges/reqres/` - ReqRes.in API load tests
+- `tests/performance/challenges/httpbin/` - HTTPBin load tests
+
+Each challenge contains:
+- `config/` - Artillery YAML configuration files
+- `processors/` - JavaScript processor files with flow functions
+- `*.load.spec.ts` - Playwright test wrappers
+
+## Artillery Configuration Standards
+
+### Naming
+- Use descriptive names for phases and scenarios
+- Prefix config files with resource name (e.g., `posts-load.yml`)
+- Use kebab-case for file names
+
+### Phases
+- Always include warm-up phase (30-60 seconds, low arrival rate)
+- Include sustained load phase (60-120 seconds, normal arrival rate)
+- Include ramp-down phase (15-30 seconds, zero arrival rate)
+- For stress tests, include high-load phase
+- For spike tests, include spike and recovery phases
+
+### Arrival Rates
+- Start with low rates (1-2 users/second)
+- Gradually increase to normal rates (5-10 users/second)
+- For stress tests, increase to maximum capacity (20+ users/second)
+- For spike tests, simulate sudden increases (30+ users/second)
+
+### Timeouts
+- Set appropriate timeouts for requests (default: 30s)
+- Consider network latency and response times
+
+### Metrics
+- Enable `expect` plugin for assertions
+- Enable `metrics-by-endpoint` for detailed metrics
+
+### Processors
+- Extract reusable logic to processor files
+- Use descriptive function names
+- Validate all responses before returning
+
+## Processor Function Standards
+
+### Error Handling
+- Always check response status codes
+- Throw descriptive errors with status codes
+- Validate response structure before returning
+
+### Response Validation
+- Validate response structure matches expected format
+- Check for required fields
+- Validate data types
+
+### Data Usage
+- Use realistic test data
+- Add randomness to simulate real users
+- Use timestamps or unique identifiers where appropriate
+
+### Cleanup
+- Clean up any created test data (if applicable)
+- Avoid creating unnecessary test data
+
+Example:
+
+```javascript
+async function getAllPostsFlow(page) {
+  const response = await page.request.get('/posts');
+  
+  if (!response.ok()) {
+    throw new Error(`Failed to fetch posts: ${response.status()}`);
+  }
+  
+  const posts = await response.json();
+  
+  if (!Array.isArray(posts) || posts.length === 0) {
+    throw new Error('Expected posts array but got invalid response');
+  }
+  
+  return posts;
+}
+```
+
+## Playwright Test Wrapper Standards
+
+### Structure
+- Use descriptive test descriptions
+- Group related tests in `test.describe` blocks
+- Use meaningful test names
+
+### Assertions
+- Validate Artillery test execution success
+- Check that results are defined
+- Validate performance metrics against thresholds
+- Check error rates
+
+### Error Reporting
+- Log violations when performance thresholds are exceeded
+- Include detailed error messages
+
+Example:
+
+```typescript
+test.describe('JSONPlaceholder Posts Load Test', () => {
+  test('should handle normal load', async () => {
+    const configPath = 'tests/performance/challenges/jsonplaceholder/config/posts-load.yml';
+    const result = await runArtilleryTest({ config: configPath });
+
+    expect(result.success).toBe(true);
+    expect(result.results).toBeDefined();
+
+    if (result.results) {
+      const validation = validatePerformanceMetrics(result.results, THRESHOLDS);
+      expect(validation.passed).toBe(true);
+    }
+  });
+});
+```
+
+## Performance Thresholds
+
+### Defining Thresholds
+- Define thresholds per API/challenge
+- Set realistic thresholds based on API capabilities
+- Document threshold rationale
+
+### Threshold Categories
+- **Latency**: Mean, p50, p95, p99 response times
+- **Error Rate**: Maximum acceptable error percentage
+- **Throughput**: Minimum requests per second
+
+### Threshold Validation
+- Validate thresholds in test wrappers
+- Fail tests if thresholds are exceeded
+- Log detailed violation information
+
+## Metrics Collection
+
+### Required Metrics
+- Response times (mean, p50, p95, p99)
+- Request counts (completed, failed)
+- Error counts
+- Throughput (requests/second)
+
+### Custom Metrics
+- Track business-specific metrics
+- Use Web Vitals where applicable
+- Monitor resource usage if available
+
+## Test Execution
+
+### Local Execution
+- Run performance tests separately from functional tests
+- Use dedicated terminal/window for performance tests
+- Monitor system resources during execution
+
+### CI/CD Execution
+- Run performance tests on every push to main (alongside E2E tests and audits)
+- Also run on schedule (daily) for continuous monitoring
+- Use `continue-on-error: true` to ensure reports are always collected
+- Set longer timeouts for CI environments
+- Upload performance reports as artifacts and publish to GitHub Pages
+
+## Reporting
+
+### Report Generation
+- Generate HTML reports for visualization
+- Include JSON reports for programmatic analysis
+- Store reports in `test-output/performance-reports/`
+
+### Report Contents
+- Test summary with key metrics
+- Latency percentiles
+- Error rates
+- Throughput metrics
+- Performance violations (if any)
+
+## Best Practices
+
+1. **Start Small**: Begin with low load and gradually increase
+2. **Warm Up**: Always include warm-up phase
+3. **Monitor Errors**: Track error rates, not just latency
+4. **Validate Responses**: Always validate API responses
+5. **Use Realistic Data**: Match production data patterns
+6. **Set Thresholds**: Define clear performance thresholds
+7. **Document Findings**: Document performance characteristics
+8. **Iterate**: Adjust thresholds based on results
+9. **Isolate Tests**: Run performance tests in isolation
+10. **Clean Up**: Remove any test data created during tests
+
+## Common Patterns
+
+### Load Test Pattern
+- Warm-up (30s, 2 req/s)
+- Normal load (60s, 5 req/s)
+- Ramp-down (15s, 0 req/s)
+
+### Stress Test Pattern
+- Warm-up (60s, 2 req/s)
+- Sustained load (120s, 10 req/s)
+- Stress load (60s, 20 req/s)
+- Ramp-down (30s, 0 req/s)
+
+### Spike Test Pattern
+- Warm-up (30s, 2 req/s)
+- Normal load (30s, 5 req/s)
+- Spike (10s, 30 req/s)
+- Recovery (30s, 5 req/s)
+- Ramp-down (15s, 0 req/s)
